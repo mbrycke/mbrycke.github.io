@@ -7,6 +7,7 @@ Random Forest is really powerfull machine learning algorithm. In general there i
 * It can make predictions of both a continous variable or categorical.
 * It usually does not overfit to badly and you generally don't need a validation set.
 * It requires very little feature engineering.
+
 We will use probably the most popular package for machine learing in Python, i.e. scikit-learn. It's not the best at anything (that I am aware of) but it's not bad at anything either. We will also use Pandas which probably is the most popular data analysis tool for python. It's so popular that how it's imported ("as pd") is standard.
 
 
