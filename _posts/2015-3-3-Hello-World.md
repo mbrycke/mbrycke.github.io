@@ -2,8 +2,6 @@
 layout: post
 title: Git basics
 ---
-# Git basics
-
 ## Installation
 (provided you're using the APT package manager, like the default on Debian/Ubuntu)
 ```ssh
