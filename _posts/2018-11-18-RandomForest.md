@@ -1,11 +1,19 @@
 ---
 layout: post
-title: test
+title: Random Forest
 ---
+## -Simple yet powerful
+Random Forest is really powerfull machine learning algorithm. In general there is no algorithm that works well for any kind of dataset. However, random forest comes pretty close.
+
+    *It can make predictions of both a continous variable or categorical.
+    *It usually does not overfit to badly and you generally don't need a validation set.
+    *It requires very little feature engineering.
+    
+We will use probably the most popular package for machine learing in Python, i.e. scikit-learn. It's not the best at anything (that I am aware of) but it's not bad at anything either. We will also use Pandas which probably is the most popular data analysis tool for python. It's so popular that how it's imported ("as pd") is standard.
+
 
 ```python
 import pandas as pd
-from IPython.display import display
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import model_selection
 import re
@@ -15,10 +23,10 @@ df_test=pd.read_csv('data/test.csv')
 
 
 ```python
-display(df_train.head())
-display(df_train.describe())
-df_train.info()
+df_train.head()
 ```
+
+
 
 
 <div>
@@ -135,6 +143,14 @@ df_train.info()
 
 
 
+
+```python
+df_train.describe()
+```
+
+
+
+
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -248,6 +264,12 @@ df_train.info()
 </div>
 
 
+
+
+```python
+df_train.info()
+```
+
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 891 entries, 0 to 890
     Data columns (total 12 columns):
@@ -276,7 +298,7 @@ Random forest (and most algorithms) need numbers, not strings and moreover can't
 
 ```python
 def getTestScoreFromRMFC(x_train, x_test, y_train, y_test):
-    rmfc=RandomForestClassifier(n_estimators=20, criterion='entropy')
+    rmfc=RandomForestClassifier(n_estimators=20, criterion='entropy',n_jobs=-1)
     rmfc.fit(x_train, y_train)
     test_score=rmfc.score(x_test, y_test)
     return test_score
@@ -295,7 +317,7 @@ getTestScoreFromRMFC(x_train, x_test, y_train, y_test)
 
 
 
-    0.6815642458100558
+    0.7318435754189944
 
 
 
@@ -331,9 +353,11 @@ getTestScoreFromRMFC(x_train, x_test, y_train, y_test)
 
 
 
-    0.8156424581005587
+    0.8100558659217877
 
 
+
+We get a very good test score with very little effort.
 
 ### Embarked 
 Lets do the same thing with Embarked. However, Embarked has two null-values, so first let's replace them with 'M' for missing value.
@@ -434,6 +458,8 @@ df_train['TicketChar']=le_tickchar.transform(df_train['TicketChar'])
 ### Name
 From the name column we can extract title. There might be something we can do with the name itself. Does the number of names has an impact (upper class people tended to have more names). Does the length of the name matter? We could even perhaps use external data if we hade access to some useful statistics of names from the period. We will settle with title
 
+#### Title
+
 
 ```python
 df_train['Title']=df_train['Name'].str.split(',', expand=True)[1].str.split('.', expand=True)[0]
@@ -445,6 +471,37 @@ le_title=LabelEncoder()
 le_title.fit(df_train['Title'])
 le_title.classes_
 df_train['Title']=le_title.transform(df_train['Title'])
+```
+
+#### Length of name
+
+
+```python
+def getNameLength(name):
+    #exlude title
+    part1=name.split(',')[0]
+    part2=name.split('.')[1]
+    tot_length=len(part1)+len(part2)
+    return tot_length
+```
+
+
+```python
+#length of name
+df_train['NameLength']=df_train['Name'].apply(lambda x: getNameLength(x))
+```
+
+### FamilySize and IsAlone
+I have seen people add this in their kernel but I don't see any improvement. This information should be available to the Random Forest algorithm anyway.
+
+
+```python
+df_train['FamilySize']=df_train['SibSp']+df_train['Parch']
+```
+
+
+```python
+df_train['IsAlone']=df_train['FamilySize'].apply(lambda x: 1 if x==1 else 0)
 ```
 
 ## Run prediction
@@ -460,7 +517,8 @@ df_train.columns
 
     Index(['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
            'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked', 'CabinChar', 'CabinNum',
-           'TicketChar', 'TicketNum', 'Title'],
+           'TicketChar', 'TicketNum', 'Title', 'NameLength', 'FamilySize',
+           'IsAlone'],
           dtype='object')
 
 
@@ -476,20 +534,33 @@ getTestScoreFromRMFC(x_train, x_test, y_train, y_test)
 
 
 
-    0.8100558659217877
+    0.8324022346368715
 
 
+
+Let's run the test for 100 times to see what the average test score is.
 
 
 ```python
 mean=0
 for i in range(100):
-    X=df_train[['Pclass','Sex','Age', 'SibSp','Parch', 'Fare', 'CabinChar', 'CabinNum', 'TicketChar', 'TicketNum', 'Title']]
+    print('.',end='')
+    X=df_train[['Pclass','Sex','Age', 'SibSp','Parch', 'Fare', 'CabinChar', 'CabinNum', 'TicketNum', 'Title','NameLength']]
     y=df_train['Survived']
     x_train, x_test, y_train, y_test = model_selection.train_test_split( X, y, test_size=0.20)
     mean+=getTestScoreFromRMFC(x_train, x_test, y_train, y_test)
-print('mean', mean/100)
+print('Average', mean/100)
 ```
 
-    mean 0.8353631284916199
+    ....................................................................................................Average 0.829106145251396
     
+
+### About the result
+We didn't improve our result significantly despite adding lots of data. We will take a look at why this is so i another blog post where we visualize the data and correlations between categories.
+
+### Testing other algorithms
+Let's see how good random forest is compared to some other popular tools.
+
+
+
+
