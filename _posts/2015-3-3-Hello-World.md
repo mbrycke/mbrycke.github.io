@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Git basics
+title: Git basics2
 ---
 ## Installation
 (provided you're using the APT package manager, like the default on Debian/Ubuntu)
@@ -19,7 +19,7 @@ Copy the link which show up. Go back to the terminal and and paste the link in t
 ```ssh
 $git remote add origin https://github.com/your/link.git
 ```
-We have now told the lokal repository where its remote origin is. Note that 'origin' is just an alias for your repository name. 
+We have now told the local repository where its remote origin is. Note that 'origin' is just an alias for your repository name. 
 
 ## Configure repository
 Configure user accout with the config command
@@ -28,4 +28,103 @@ $git config --global user.name "youre_git_username"
 $git config --global user.email adress@email.com
 ```
 
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
+## Set upstream branch
+You can tell your local repository which is the upstream branch by doing an initial pull(i.e. download the files from the remote repository. Right now there is probably none or just a README.md file)
+```ssh
+$git pull origin master
+```
+ Then set upstream.
+ ```$
+ git branch --set-upstream-to=origin/master
+ ```
+
+## Push files to remote repository
+If you add or edit files in your project and want to push to your remote repository you first need to add the files to the tracker
+```ssh
+$git add -A
+```
+The flag -A means adding all files. You can choose a specific file by entering the file name instead. Then you need to commit the changes and write a short message(not more than about 140 characters) describing the changes
+```ssh
+$git commit -m "This is the description message"
+```
+Finally push to the remote repository  
+```ssh
+$git push
+```
+(and enter username and password)
+If we had not set the upstream we would need to enter
+```ssh
+$git push origin master
+```
+## Create a local branch
+One of the wonderful things with a version control tool like git is to be able to have different branches (version) of the project. To branch a new copy of the project localy
+```ssh
+$git branch name-of-mynewbranch
+```
+Now you can do changes that does not affect the master branch(or other branches of course). Save changes as usual by
+```ssh
+$git add -A
+$git commit  -m "Saving to a new branch"
+```
+## List branches
+### Local branches
+```ssh
+$git branch
+```
+### All branches
+```ssh
+$git branch -a
+```
+Use the flag -r for listing only remote, -l for only local.
+
+## Switch local branch
+To switch between local branches use
+```ssh
+$git checkout branchname
+```
+
+## Push new branch to remote repository
+To push a new branch to the remote repository 
+```ssh
+$git push --set-upstream origin newbranchname
+```
+This will push the currently checkout out local branch
+
+## Setting your local branch to exactly match remote branch
+
+```ssh
+$git fetch origin
+$git reset --hard origin/master
+```
+
+## Go to particular revision
+If you want to checkout a specific version you first need the SHA-1 hash of that commit. You can review the commits by
+```ssh
+$git log
+```
+You can also get a graphical view of the project with
+```ssh
+$gitk --all
+```
+Now checkout the particular revision by
+```ssh
+$ssh checkout <sha1>
+```
+Note that you don't need to provide the whole hash. The first four characters is an enough, as long as it is unambiguous.
+
+
+## Pulling specific directory from git repository
+First create a directory where you want you local repository. cd into that directory. Initilize a git repo
+```ssh
+$git init
+$git remote add origin https://github.com/theproject/adress.git
+```
+Fetch project
+```ssh
+$git fetch origin
+```
+Extract the direcotry
+```ssh
+$git checkout origin/master -- relative/path/to/file/or/dir
+```
+Note that you of course can choose any branch in the line above and not just master.

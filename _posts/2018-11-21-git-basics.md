@@ -1,8 +1,7 @@
 ---
 layout: post
-title: Git basics
+title: Git basics2
 ---
-
 ## Installation
 (provided you're using the APT package manager, like the default on Debian/Ubuntu)
 ```ssh
@@ -13,8 +12,6 @@ cd into the directory you wish to create a repository for. Then initialize a git
 ```ssh
 $git init
 ```
-
-
 Now, go to [Github](https://github.com/) and create a repository for the project. (First you need to create an account on github if you don't have it, and log in)
 /images/git1.png
 Click on start object and fill out the form you are linked to, i.e. Repository name, and optional Description. Then click no 'Create repository' /images/cloneordownload.png
@@ -22,7 +19,7 @@ Copy the link which show up. Go back to the terminal and and paste the link in t
 ```ssh
 $git remote add origin https://github.com/your/link.git
 ```
-We have now told the lokal repository where its remote origin is. Note that 'origin' is just an alias for your repository name. 
+We have now told the local repository where its remote origin is. Note that 'origin' is just an alias for your repository name. 
 
 ## Configure repository
 Configure user accout with the config command
