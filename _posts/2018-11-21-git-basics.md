@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Git basics2
+title: Git basics
 ---
 ## Installation
 (provided you're using the APT package manager, like the default on Debian/Ubuntu)
