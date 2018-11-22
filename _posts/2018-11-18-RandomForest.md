@@ -2,6 +2,7 @@
 layout: post
 title: Random Forest
 ---
+
 ## -Simple yet powerful
 Random Forest is really powerfull machine learning algorithm. In general there is no algorithm that works well for any kind of dataset. However, random forest comes pretty close.
 
@@ -18,257 +19,39 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import model_selection
 import re
 import warnings; warnings.simplefilter('ignore')
+from IPython.display import display, Markdown
 df_train=pd.read_csv('data/train.csv')
 df_test=pd.read_csv('data/test.csv')
 ```
 
 
 ```python
-df_train.head()
+def pandas_df_to_markdown_table(df):
+    fmt = ['---' for i in range(len(df.columns))]
+    df_fmt = pd.DataFrame([fmt], columns=df.columns)
+    df_formatted = pd.concat([df_fmt, df])
+    display(Markdown(df_formatted.to_csv(sep="|", index=False)))
 ```
 
 
+```python
+pandas_df_to_markdown_table(df_train.head())
+```
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Survived</th>
-      <th>Pclass</th>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Ticket</th>
-      <th>Fare</th>
-      <th>Cabin</th>
-      <th>Embarked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Braund, Mr. Owen Harris</td>
-      <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>A/5 21171</td>
-      <td>7.2500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
-      <td>female</td>
-      <td>38.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>PC 17599</td>
-      <td>71.2833</td>
-      <td>C85</td>
-      <td>C</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>3</td>
-      <td>Heikkinen, Miss. Laina</td>
-      <td>female</td>
-      <td>26.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>STON/O2. 3101282</td>
-      <td>7.9250</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
-      <td>female</td>
-      <td>35.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>113803</td>
-      <td>53.1000</td>
-      <td>C123</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Allen, Mr. William Henry</td>
-      <td>male</td>
-      <td>35.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>373450</td>
-      <td>8.0500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+PassengerId|Survived|Pclass|Name|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+---|---|---|---|---|---|---|---|---|---|---|---
+1|0|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.25||S
+2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Thayer)|female|38.0|1|0|PC 17599|71.2833|C85|C
+3|1|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.925||S
+4|1|1|Futrelle, Mrs. Jacques Heath (Lily May Peel)|female|35.0|1|0|113803|53.1|C123|S
+5|0|3|Allen, Mr. William Henry|male|35.0|0|0|373450|8.05||S
 
 
 
 
 ```python
-df_train.describe()
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Survived</th>
-      <th>Pclass</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Fare</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>891.000000</td>
-      <td>891.000000</td>
-      <td>891.000000</td>
-      <td>714.000000</td>
-      <td>891.000000</td>
-      <td>891.000000</td>
-      <td>891.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>446.000000</td>
-      <td>0.383838</td>
-      <td>2.308642</td>
-      <td>29.699118</td>
-      <td>0.523008</td>
-      <td>0.381594</td>
-      <td>32.204208</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>257.353842</td>
-      <td>0.486592</td>
-      <td>0.836071</td>
-      <td>14.526497</td>
-      <td>1.102743</td>
-      <td>0.806057</td>
-      <td>49.693429</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>0.420000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>223.500000</td>
-      <td>0.000000</td>
-      <td>2.000000</td>
-      <td>20.125000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>7.910400</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>446.000000</td>
-      <td>0.000000</td>
-      <td>3.000000</td>
-      <td>28.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>14.454200</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>668.500000</td>
-      <td>1.000000</td>
-      <td>3.000000</td>
-      <td>38.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
-      <td>31.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>891.000000</td>
-      <td>1.000000</td>
-      <td>3.000000</td>
-      <td>80.000000</td>
-      <td>8.000000</td>
-      <td>6.000000</td>
-      <td>512.329200</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-df_train.info()
+print(df_train.info())
 ```
 
     <class 'pandas.core.frame.DataFrame'>
@@ -288,6 +71,33 @@ df_train.info()
     Embarked       889 non-null object
     dtypes: float64(2), int64(5), object(5)
     memory usage: 83.6+ KB
+    None
+    
+
+
+```python
+print(df_train.describe())
+```
+
+           PassengerId    Survived      Pclass         Age       SibSp  \
+    count   891.000000  891.000000  891.000000  714.000000  891.000000   
+    mean    446.000000    0.383838    2.308642   29.699118    0.523008   
+    std     257.353842    0.486592    0.836071   14.526497    1.102743   
+    min       1.000000    0.000000    1.000000    0.420000    0.000000   
+    25%     223.500000    0.000000    2.000000   20.125000    0.000000   
+    50%     446.000000    0.000000    3.000000   28.000000    0.000000   
+    75%     668.500000    1.000000    3.000000   38.000000    1.000000   
+    max     891.000000    1.000000    3.000000   80.000000    8.000000   
+    
+                Parch        Fare  
+    count  891.000000  891.000000  
+    mean     0.381594   32.204208  
+    std      0.806057   49.693429  
+    min      0.000000    0.000000  
+    25%      0.000000    7.910400  
+    50%      0.000000   14.454200  
+    75%      0.000000   31.000000  
+    max      6.000000  512.329200  
     
 
 From the above we can see that
@@ -315,7 +125,7 @@ x_train, x_test, y_train, y_test = model_selection.train_test_split( X, y, test_
 print('Test score:',getTestScoreFromRMFC(x_train, x_test, y_train, y_test))
 ```
 
-    Test score: 0.6703910614525139
+    Test score: 0.6927374301675978
     
 
 As you might have suspected, the result is not very good. But it's way better than chance alone. Now, let's try using more data.
@@ -347,7 +157,7 @@ x_train, x_test, y_train, y_test = model_selection.train_test_split( X, y, test_
 print('Test score:',getTestScoreFromRMFC(x_train, x_test, y_train, y_test))
 ```
 
-    Test score: 0.8044692737430168
+    Test score: 0.7877094972067039
     
 
 We significantely improve the test score with very litte effor. 
@@ -534,7 +344,7 @@ getTestScoreFromRMFC(x_train, x_test, y_train, y_test)
 
 
 
-    0.8268156424581006
+    0.8324022346368715
 
 
 
@@ -554,7 +364,7 @@ print('Average', mean/100)
 ```
 
     #################################################################################################### Ready!
-    Average 0.8282681564245807
+    Average 0.8303910614525136
     
 
 ### About the result
@@ -675,79 +485,79 @@ df_testscore
       <th>0</th>
       <td>AdaBoostClassifier</td>
       <td>0.815363</td>
-      <td>0.066032</td>
+      <td>0.065842</td>
     </tr>
     <tr>
       <th>1</th>
       <td>BaggingClassifier</td>
-      <td>0.813855</td>
-      <td>0.022506</td>
+      <td>0.814078</td>
+      <td>0.022147</td>
     </tr>
     <tr>
       <th>2</th>
       <td>ExtraTreesClassifier</td>
-      <td>0.818659</td>
-      <td>0.012779</td>
+      <td>0.817263</td>
+      <td>0.012723</td>
     </tr>
     <tr>
       <th>3</th>
       <td>GradientBoostingClassifier</td>
-      <td>0.832291</td>
-      <td>0.089795</td>
+      <td>0.832682</td>
+      <td>0.089744</td>
     </tr>
     <tr>
       <th>4</th>
       <td>RandomForestClassifier</td>
-      <td>0.825140</td>
-      <td>0.014206</td>
+      <td>0.821229</td>
+      <td>0.014231</td>
     </tr>
     <tr>
       <th>5</th>
       <td>GaussianProcessClassifier</td>
       <td>0.689441</td>
-      <td>0.252284</td>
+      <td>0.247731</td>
     </tr>
     <tr>
       <th>6</th>
       <td>LogisticRegressionCV</td>
       <td>0.716425</td>
-      <td>0.099048</td>
+      <td>0.097742</td>
     </tr>
     <tr>
       <th>7</th>
       <td>PassiveAggressiveClassifier</td>
-      <td>0.507877</td>
-      <td>0.002195</td>
+      <td>0.538436</td>
+      <td>0.002254</td>
     </tr>
     <tr>
       <th>8</th>
       <td>RidgeClassifierCV</td>
       <td>0.793575</td>
-      <td>0.003863</td>
+      <td>0.003988</td>
     </tr>
     <tr>
       <th>9</th>
       <td>SGDClassifier</td>
-      <td>0.550168</td>
-      <td>0.002118</td>
+      <td>0.551453</td>
+      <td>0.002159</td>
     </tr>
     <tr>
       <th>10</th>
       <td>Perceptron</td>
       <td>0.532626</td>
-      <td>0.002332</td>
+      <td>0.002179</td>
     </tr>
     <tr>
       <th>11</th>
       <td>BernoulliNB</td>
       <td>0.788045</td>
-      <td>0.002339</td>
+      <td>0.002298</td>
     </tr>
     <tr>
       <th>12</th>
       <td>GaussianNB</td>
       <td>0.682737</td>
-      <td>0.002239</td>
+      <td>0.002129</td>
     </tr>
     <tr>
       <th>13</th>
@@ -759,43 +569,43 @@ df_testscore
       <th>14</th>
       <td>SVC</td>
       <td>0.632905</td>
-      <td>0.201159</td>
+      <td>0.198373</td>
     </tr>
     <tr>
       <th>15</th>
       <td>NuSVC</td>
       <td>0.634190</td>
-      <td>0.211092</td>
+      <td>0.209005</td>
     </tr>
     <tr>
       <th>16</th>
       <td>LinearSVC</td>
-      <td>0.538771</td>
-      <td>0.038296</td>
+      <td>0.530056</td>
+      <td>0.037551</td>
     </tr>
     <tr>
       <th>17</th>
       <td>DecisionTreeClassifier</td>
-      <td>0.766425</td>
-      <td>0.003817</td>
+      <td>0.764749</td>
+      <td>0.003838</td>
     </tr>
     <tr>
       <th>18</th>
       <td>ExtraTreeClassifier</td>
-      <td>0.758268</td>
-      <td>0.002198</td>
+      <td>0.757486</td>
+      <td>0.002228</td>
     </tr>
     <tr>
       <th>19</th>
       <td>LinearDiscriminantAnalysis</td>
       <td>0.794246</td>
-      <td>0.003638</td>
+      <td>0.003578</td>
     </tr>
     <tr>
       <th>20</th>
       <td>QuadraticDiscriminantAnalysis</td>
       <td>0.786983</td>
-      <td>0.002279</td>
+      <td>0.002294</td>
     </tr>
   </tbody>
 </table>
