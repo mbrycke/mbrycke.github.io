@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Random Forest
+title: Random Forest Part 1
 ---
 
 ## -Simple yet powerful
