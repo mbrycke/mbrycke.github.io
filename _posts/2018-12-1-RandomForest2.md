@@ -3,7 +3,7 @@ layout: post
 title: Random Forest Part 2
 ---
 ## Random Forest applied to a big dataset.
-We will continue using random forest, but this time  we will use it for regression analysis (as compared to classification in the Titanic data set). We will use the data from the kaggle competition [Corporacion Favorita Grocery sales Forecasting](https://www.kaggle.com/c/favorita-grocery-sales-forecasting) This dataset is much larger so we will have to use different techniques handling this, unless we an powerfull computer and alot of memory. 
+We will continue using random forest, but this time  we will use it for regression analysis (as compared to classification in the Titanic data set). We will use the data from the kaggle competition [Corporacion Favorita Grocery sales Forecasting](https://www.kaggle.com/c/favorita-grocery-sales-forecasting) This dataset is much larger so we will have to use different techniques handling this, unless we have a powerfull computer and alot of memory. 
 
 
 ```python
