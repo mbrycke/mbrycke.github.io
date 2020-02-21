@@ -10,3 +10,7 @@ print('hello world')
 ```javascript
 alert('hello world');
 ```
+```javascript
+/* Some pointless Javascript */
+var rawr = ["r", "a", "w", "r"];
+```
