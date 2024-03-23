@@ -1,6 +1,8 @@
 ---
-layout: post
-title: Writing Latex in a markdown document
+title: Katex and Mermaid
+date: 2024-03-23 21:00:00 +/-TTTT
+categories: [blog,sub_category]
+tags: [test_tag]     # TAG names should always be lowercase
 ---
 ## KaTeX
 You can render LaTeX mathematical expressions using KaTeX:
