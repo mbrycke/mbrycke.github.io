@@ -9,10 +9,10 @@ mermaid: true
 ## KaTeX
 You can render LaTeX mathematical expressions using KaTeX:
 
-The Gamma function satisfying Γ(n) = (n-1)! ∀ n∈\mathbb N is via the Euler integral
+The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
 
 $$
-Γ(z) = \int₀^∞ tᶻ⁻¹e⁻ᵗdt\,.
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 
 
