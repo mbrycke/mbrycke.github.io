@@ -1,8 +1,8 @@
 ---
 title: Devina Comedia 
 date: 2024-02-03 23:22:01 +0200
-categories: [Dante, Literary History]
-tags: [Dante, Devina Comedia] # TAG names should always be lowercase
+categories: [Dante, Literary_History]
+tags: [Dante, Devina_Comedia] # TAG names should always be lowercase
 ---
 
 # Devina Comedia
