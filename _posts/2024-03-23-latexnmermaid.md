@@ -16,11 +16,11 @@ $$
 $$
 
 
-> You can find more information about LaTeX mathematical expressions here.
+> You can find more information about **LaTeX** mathematical expressions [here](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
 
 ## UML diagrams
 
-You can render UML diagrams using Mermaid. For example, this will produce a sequence diagram:
+You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
 
 ```mermaid
 sequenceDiagram
