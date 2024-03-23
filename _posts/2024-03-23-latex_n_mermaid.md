@@ -1,6 +1,6 @@
 ---
 title: Katex and Mermaid
-date: 2024-03-23 21:00:00 +/-TTTT
+date: 2024-03-23 21:00:00 +0100
 categories: [blog,sub_category]
 tags: [test_tag]     # TAG names should always be lowercase
 ---
