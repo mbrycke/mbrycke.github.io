@@ -1,8 +1,8 @@
 ---
 title: Katex and Mermaid
 date: 2024-03-23 21:00:00 +0100
-categories: [blog,sub_category]
-tags: [test_tag]     # TAG names should always be lowercase
+categories: [blog,subcategory]
+tags: [testtag]     # TAG names should always be lowercase
 ---
 ## KaTeX
 You can render LaTeX mathematical expressions using KaTeX:
