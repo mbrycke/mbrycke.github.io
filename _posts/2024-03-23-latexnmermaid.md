@@ -3,6 +3,8 @@ title: Katex and Mermaid
 date: 2024-03-23 21:00:00 +0100
 categories: [blog,subcategory]
 tags: [testtag]     # TAG names should always be lowercase
+math: true
+mermaid: true
 ---
 ## KaTeX
 You can render LaTeX mathematical expressions using KaTeX:
