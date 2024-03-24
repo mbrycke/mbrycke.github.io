@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Persistent Volumes in Docker
 date: 2024-03-24
 categories: [docker, volume]
