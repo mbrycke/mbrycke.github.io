@@ -2,7 +2,6 @@ import datetime
 
 def generate_template(title:str, today:datetime.date) -> str:
     template = f"""---
-layout: post
 title: {title}
 date: {today}
 categories: [category1, category2]
