@@ -1,7 +1,7 @@
 ---
 title: Docker Development Environment
 date: 2024-03-25
-categories: [docker, development, ssh, vscode, ubuntu, postgres]
+categories: [docker, development]
 tags: [docker, docker-compose, ssh, vscode,  openssh-server, ubuntu, postgres]
 ---
     
