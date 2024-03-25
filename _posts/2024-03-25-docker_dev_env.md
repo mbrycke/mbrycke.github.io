@@ -1,8 +1,8 @@
 ---
-title: My New Post
+title: Docker Development Environment
 date: 2024-03-25
-categories: [category1, category2]
-tags: [tag1, tag2]
+categories: [docker, development, ssh, vscode, ubuntu, postgres]
+tags: [docker, docker-compose, ssh, vscode,  openssh-server, ubuntu, postgres]
 ---
     
 # Create a docker development environment
