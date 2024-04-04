@@ -172,6 +172,7 @@ services:
     restart: unless-stopped # Restart the container unless it was stopped by the user
     volumes:
       - dev_container_data:/home/ubuntu # Creates a volume for the container's /app directory. I.e files in the container's /app directory will be stored on the host machine in the volume dev_container_data. You can specify a path on the host machine to store the volume by changing the left side of the colon. E.g. /path/on/host:/home/ubuntu. Note that it is not recomended (or even possible?) to mount the root directory of the docker container to the host machine.
+      - /home/myhome/data/data:/home/ubuntu/data # mounts a directory on the host machine to a directory in the container. In this case /home/myhome/data/data on the host machine is mounted to /home/ubuntu/data in the container. This is useful if you want to share/store data on the host machine.
 
   db:
     image: postgres:latest
