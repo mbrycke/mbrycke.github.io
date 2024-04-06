@@ -208,3 +208,33 @@ If you make changes to the Dockerfile or the docker-compose.yml file, you can re
 ```bash
 docker compose up -d --build
 ```
+
+# Access the host system's GPU (NVIDIA)
+To be able to access the host system's GPU from the container you need 2 things.
+
+1. Install the NVIDIA Container Toolkit. You can do this by following the instructions on the [NVIDIA Container Toolkit GitHub page](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+
+2. Start the container with the `--gpus all` (or specify which GPU) flag. This will give the container access to all the host system's GPUs. **Or, since we are using docker-compose, you can add the following to the** `docker-compose.yml` file:
+
+```yaml
+version: '3.8'
+services:
+  dev_container:
+    build: .
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+    ...
+```
+You need to rebuild the image with `docker compose up -d --build` after adding this to the `docker-compose.yml` file.
+
+
+
+
