@@ -16,7 +16,7 @@ timezone:
 
 title: Phosphor Glow # the main title
 
-tagline: Software development and random stuff # it will display as the sub-title
+tagline: A blog about software development and occasional random stuff # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A blog about software developent and random stuff
