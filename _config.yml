@@ -14,9 +14,9 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Mimaroben # the main title
+title: Phosphor Glow # the main title
 
-tagline: Software and misc # it will display as the sub-title
+tagline: Software development and random stuff # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A blog about software developent and random stuff
