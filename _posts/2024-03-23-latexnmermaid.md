@@ -6,6 +6,9 @@ tags: [Katex, Latex, Mermaid]     # TAG names should always be lowercase
 math: true # Needed for latex, don't include by default since makes rendering a bit slower
 mermaid: true # Needed for mermaid, don't include by default since make rendering a bit slower
 ---
+## Jekyll, KaTeX and Mermaid
+Using jekyll and markdown you can render LaTeX mathematical expressions and UML diagrams using KaTeX and Mermaid.
+
 ## KaTeX
 You can render LaTeX mathematical expressions using KaTeX:
 
