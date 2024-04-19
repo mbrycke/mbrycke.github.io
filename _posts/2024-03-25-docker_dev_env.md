@@ -190,6 +190,13 @@ volumes:
   dev_container_data:
   db-data:
 ```
+>The `restart: unless-stopped` is very similar to `restart: always`. The difference is that unless-stopped will not restart the container if it was stopped by the user. This is useful if you want to stop the container and not have it restart automatically at e.g. reboot (which is the case if stoped manually and having the `always` policy)
+{:prompt-info}
+
+Then you can start the services with the command:
+
+```bash 
+{:prompt-tip}
 
 Then you can start the services with the command:
 

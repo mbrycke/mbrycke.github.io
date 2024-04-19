@@ -24,3 +24,6 @@ with open(file_name, "w") as file:
 
 print(f"File created: {file_name}\n")
 print("ℹ️   FOR MORE INFORMATION, visit: https://chirpy.cotes.page/posts/write-a-new-post/")
+
+print("or")
+print("https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/_posts/2019-08-08-write-a-new-post.md")
