@@ -5,8 +5,6 @@ categories: [docker, volume]
 tags: [linux, docker]
 ---
 
-# Persistent Volumes in Docker (protecting your data)
-
 ## Intro
 
 Data is actually persistent in a docker container if the container is restarted on e.g. a system reboot. This is because the data is stored in the container's writable layer.

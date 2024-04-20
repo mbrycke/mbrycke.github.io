@@ -5,10 +5,10 @@ categories: [docker, development]
 tags: [docker, docker-compose, ssh, vscode,  openssh-server, ubuntu, postgres]
 ---
     
-# Create a docker development environment
-It can be a good idea to create a docker development container. In this way you can install all the tools you need, remove them, and start over again without messing up your host system.
-
 ## Intro
+
+It can be a good idea to create a docker development container. In this way you can install all the tools you need, remove them, and start over again without messing up your host system. <br><br>
+
 The idea is to create a docker container with all the tools you need for development and connect to it with ssh. This way you can e.g. use vscode on your host system to connect to the container using the remote ssh extension. This will be like developing on a remote server, but the server is your own computer.
 
 ## 1. Creating Dockerfile

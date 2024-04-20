@@ -5,7 +5,6 @@ categories: [Literary History, Dante]
 tags: [Dante, Devina_Comedia] # TAG names should always be lowercase
 ---
 
-# Devina Comedia
 
 ## Intro
 Much of the book is about Dante going to the afterlife and meating a hole lot of people. While doing so he does much of political commentary.
