@@ -78,8 +78,8 @@ CMD ["/usr/sbin/sshd", "-D"]
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
 
-# Set up workspace directory
-WORKDIR /workspace
+# Set up workspace directory. Usually this is set to `/workspace` but we added a user `ubuntu` so we will set it to `/home/ubuntu`
+WORKDIR /home/ubuntu
 ```
 ## 2. Build the image
 
@@ -171,13 +171,12 @@ services:
       - 2222:22 # This exposes the container's SSH server on port 2222
     restart: unless-stopped # Restart the container unless it was stopped by the user
     volumes:
-      - dev_container_data:/home/ubuntu # Creates a volume for the container's /app directory. I.e files in the container's /app directory will be stored on the host machine in the volume dev_container_data. You can specify a path on the host machine to store the volume by changing the left side of the colon. E.g. /path/on/host:/home/ubuntu. Note that it is not recomended (or even possible?) to mount the root directory of the docker container to the host machine.
-      - /home/myhome/data/data:/home/ubuntu/data # mounts a directory on the host machine to a directory in the container. In this case /home/myhome/data/data on the host machine is mounted to /home/ubuntu/data in the container. This is useful if you want to share/store data on the host machine.
+      - ./dev_container_data:/home/ubuntu/ # This mounts the host system's dev_container_data directory into the container's /home/ubuntu directory. This way the data in the /home/ubuntu directory is persisted even if the container is deleted.
 
   db:
     image: postgres:latest
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data # This mounts the host system's pgdata directory into the container's /var/lib/postgresql/data directory. This way the data in the /var/lib/postgresql/data directory is persisted even if the container is deleted.
     environment:
       POSTGRES_DB: postgres_db 
       POSTGRES_USER: myuser
