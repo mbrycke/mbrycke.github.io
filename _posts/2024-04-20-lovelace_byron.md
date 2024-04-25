@@ -13,6 +13,7 @@ Ada Lovelace has been called the first computer programmer. Her name has recentl
 {: .prompt-info}
 
 <br>
+
 >Lord Byron was born in 1788. He is considered one of the greatest British poets. He is best known for his narrative poems "Childe Harold's Pilgrimage" and "Don Juan". He is perhaps also quite famous for swimming the Hellespont in an attempt to recreate the legendary swim by Leander.
 {: .prompt-info}
 
