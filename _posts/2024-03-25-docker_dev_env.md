@@ -80,6 +80,7 @@ ENV DEBIAN_FRONTEND=dialog
 
 # Set up workspace directory. Usually this is set to `/workspace` but we added a user `ubuntu` so we will set it to `/home/ubuntu`
 WORKDIR /home/ubuntu
+
 ```
 ## 2. Build the image
 
