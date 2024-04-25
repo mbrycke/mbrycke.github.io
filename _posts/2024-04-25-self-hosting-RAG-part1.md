@@ -10,6 +10,11 @@ RAG (Retrieval Augmented Generation) is the idea to store data in reasonable sma
 
 In this way we can store lots of data and query an llm about it without having a huge context window.
 
+In this series we will outline how to self-host the RAG model. In this first part we will set up a server for the embeddings model. It will be fully functional, but very basic. For a production environment you need to add more features, like logging, error handling, security etc.
+
+## Why self-hosting
+There might be several reason, e.g. you could be handling sensitive data. There is also the fact that models evolve rapidly and you might want to have control over the models you are using, both for embedding and text generation.
+
 ## Running a server for the embeddings model
 By running the model on server we don't have to load the model in memory every time we want to make a query. Sure, when we populate the database the time to load the model might be small compared to the time to populate the database, but when we want to make a query we don't want to wait for the model to load every time.
 

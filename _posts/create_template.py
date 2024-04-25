@@ -13,7 +13,7 @@ Write your content here.
     return template
 
 
-title = "My New Post"
+title = "self-hosing-RAG-part2"
 today = datetime.date.today()
 template = generate_template(title, today)
 
