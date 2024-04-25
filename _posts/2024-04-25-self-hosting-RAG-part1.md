@@ -116,4 +116,4 @@ print(response.json())
 ```
 You should get back a list of two vectors with the embeddings of the two queries.
 
-Now we are ready to populate the database with the embeddings of the data we want to store. We will do this in the next part of this series. We'll do this in part 2
+Now we are ready to populate the database with the embeddings of the data we want to store. We will do this in the next part of this series (part2).
