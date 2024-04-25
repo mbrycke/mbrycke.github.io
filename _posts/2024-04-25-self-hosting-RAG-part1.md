@@ -13,7 +13,7 @@ In this way we can store lots of data and query an llm about it without having a
 ## Running a server for the embeddings model
 By running the model on server we don't have to load the model in memory every time we want to make a query. Sure, when we populate the database the time to load the model might be small compared to the time to populate the database, but when we want to make a query we don't want to wait for the model to load every time.
 
-### Running the server
+### Setting up the server
 There are a bunch of backend servers for python, like flask or the very similar fastapi. We will use flask in this very basic example.
 
 This is the structure of the project:
