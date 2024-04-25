@@ -18,15 +18,15 @@ Ada Lovelace has been called the first computer programmer. Her name has recentl
 {: .prompt-info}
 
 Byron was a very controversial figure in his time, and he was a leading figure in the Romantic movement.
-Maybe the first time I heard of Byron was from the execellent movie "Dead Poets Society" when the teacher John Keating (played by Robin Williams) mockingly says "well I like Byron, I give him a 42, but I can't dance to him!". Later on in the movie one of the students reads a poem by Byron; "She walks in beauty, like the night".
+Maybe the first time I heard of Byron was from the execellent movie "Dead Poets Society" when the teacher John Keating (played by Robin Williams) mockingly says "well I like Byron, I give him a 42, but I can't dance to him!". Later on in the movie one of the students reads a poem by Byron:
+<br>
 
->She walks in beauty, like the night
-Of cloudless climes and starry skies;
-And all that's best of dark and bright
-Meet in her aspect and her eyes;
-Thus mellowed to that tender light
-Which heaven to gaudy day denies.
-{: .prompt-tip}
+*She walks in beauty, like the night*<br>
+*Of cloudless climes and starry skies;*<br>
+*And all that's best of dark and bright*<br>
+*Meet in her aspect and her eyes;*<br>
+*Thus mellowed to that tender light*<br>
+*Which heaven to gaudy day denies.*<br>
 
 
 continued...
