@@ -12,6 +12,10 @@ In this way we can store lots of data and query an llm about it without having a
 
 In this series we will outline how to self-host the RAG model. In this first part we will set up a server for the embeddings model. It will be fully functional, but very basic. For a production environment you need to add more features, like logging, error handling, security etc.
 
+>For a production environment you need to add more features, like logging, error handling, security, better efficency, thread safe queueing of incoming requests etc.
+{: .prompt-warning}
+
+
 ## Why self-hosting
 There might be several reason, e.g. you could be handling sensitive data. There is also the fact that models evolve rapidly and you might want to have control over the models you are using, both for embedding and text generation.
 
