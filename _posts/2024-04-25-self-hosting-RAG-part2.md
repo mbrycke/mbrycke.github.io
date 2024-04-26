@@ -1,5 +1,5 @@
 ---
-title: Self-hosting-RAG-part2
+title: Self-hosting RAG part2
 date: 2024-04-25
 categories: [deep learning,rag]
 tags: [vector database, embeddings, rag, self-hosting, docker, postgresql, pgvector]
