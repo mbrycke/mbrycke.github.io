@@ -1,7 +1,7 @@
 ---
 title: Generator expression and next() in Python
 date: 2024-04-29
-categories: [Python, generator, next()]
+categories: [Python, generator]
 tags: [generators, next()]
 ---
     
