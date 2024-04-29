@@ -13,7 +13,7 @@ Write your content here.
     return template
 
 
-title = "self-hosing-RAG-part2"
+title = "Generator expression and Next() in Python"
 today = datetime.date.today()
 template = generate_template(title, today)
 
