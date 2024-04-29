@@ -28,7 +28,6 @@ for person in persons:
         target_person = person
         break
 else:
-    print('Person not found')
     target_person = None
 
 print(target_person.name, target_person.age)
