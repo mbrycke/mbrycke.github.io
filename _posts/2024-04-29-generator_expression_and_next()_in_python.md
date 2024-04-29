@@ -49,7 +49,7 @@ Remember the `next()` function syntax:
 next(iterator, default)
 ```
 
-Using list comprehension is also an option, but it will be less efficient since it will iterate over the entire list:
+Using list comprehension is also an option, but it will be less efficient since it will iterate over the entire list (list comprehension does not have a break statement):
 ```python
 person = [person for person in persons if person.name == 'Bob'][0] # less efficient
 ```
