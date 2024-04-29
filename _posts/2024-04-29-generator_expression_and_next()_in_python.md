@@ -1,5 +1,5 @@
 ---
-title: Generator expression and Next() in Python
+title: Generator expression and next() in Python
 date: 2024-04-29
 categories: [Python, generator, next()]
 tags: [generators, next()]
