@@ -39,6 +39,7 @@ However, using a generator expression and the next() function might be a more el
 ```python
 
 person = next((person for person in persons if person.name == 'Bob'), None)
+
 print(person.name, person.age)
 ```
 The `next()` function will return the first item in the generator expression that matches the condition, i.e. the loop will break. If no item is found, it will return the default value, in this case `None`.
