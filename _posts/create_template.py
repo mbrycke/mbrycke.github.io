@@ -4,8 +4,8 @@ def generate_template(title:str, today:datetime.date) -> str:
     template = f"""---
 title: {title}
 date: {today}
-categories: [programming, multiprocessing]
-tags: [multiprocessing, python]
+categories: [programming, asyncio]
+tags: [multiprocessing, asyncio, threading python]
 ---
     
 Write your content here.
@@ -13,7 +13,7 @@ Write your content here.
     return template
 
 
-title = "Multiprocessing in Python"
+title = "Asyncio vs Multiprocessing in Python"
 today = datetime.date.today()
 template = generate_template(title, today)
 
