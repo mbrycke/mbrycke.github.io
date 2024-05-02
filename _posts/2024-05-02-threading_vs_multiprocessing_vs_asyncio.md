@@ -170,7 +170,7 @@ int main() {
     return 0;
 }
 ```
-Running with `g++ -std=c++23 main -pthread main.cpp -o main` yielded:
+Compiling with `g++ -std=c++23 main -pthread main.cpp -o main` yielded:
 
 ```bash
 All threads are finished
