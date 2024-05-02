@@ -4,8 +4,8 @@ def generate_template(title:str, today:datetime.date) -> str:
     template = f"""---
 title: {title}
 date: {today}
-categories: [category1, category2]
-tags: [tag1, tag2]
+categories: [programming, threading]
+tags: [threading, python, c++]
 ---
     
 Write your content here.
@@ -13,7 +13,7 @@ Write your content here.
     return template
 
 
-title = "Generator expression and Next() in Python"
+title = "Threading in Python vs C++"
 today = datetime.date.today()
 template = generate_template(title, today)
 
