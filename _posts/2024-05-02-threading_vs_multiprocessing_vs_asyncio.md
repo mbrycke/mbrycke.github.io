@@ -7,7 +7,6 @@ tags: [threading, multiprocessing, asyncio, python, c++]
 
 ## TL;DR
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'lineInterpolate': 'basis' }}}%%
 graph TD
     A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
     A -- "No"--> C[MultiProcessing]
