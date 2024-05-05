@@ -4,15 +4,29 @@ date: 2024-05-02
 categories: [programming, parallelism]
 tags: [threading, multiprocessing, asyncio, python, c++]
 ---
+
+## TL;DR
+```
+graph LR
+
+
+A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
+A -- "No"--> C[MultiProcessing]
+B --"Yes"--> E[Asyncio]
+B --"No"--> D[Threading]
+```
+
     
 ## Introduction
-Threads are a way to run multiple tasks concurrently. The difference between threads and processes is that threads share the same memory space, while processes have separate memory spaces (and separate python interpreter). This makes threads more lightweight than processes. But it also makes threads more error-prone since they can interfere with each other.
+### Threads vs Multiprocessing
+The difference between threads and processes is that threads share the same memory space, while processes have separate memory spaces (and separate python interpreter). This makes threads more lightweight than processes. But it also makes threads more error-prone since they can interfere with each other.
 
-In this post we will compare how threading is done in Python and C++. There is a big difference in how threads are implemented in the two languages. Python has a Global Interpreter Lock (GIL) which makes it difficult to run threads in parallel.
+In this post we will also compare how threading in Python and C++. There is a big difference in how threads are implemented in the two languages. Python has a Global Interpreter Lock (GIL) which makes it difficult to run threads in parallel. All threads do run concurrently, but only one thread can execute Python code at a time. C++ threads do not have this limitation.
 
-Asyncio is another way to run multiple tasks concurrently in Python. It is best used for I/O-bound tasks. It uses a single thread to run multiple tasks concurrently.
+### Asyncio
+Asyncio (introduced in Python 3.4) is another way to run multiple tasks concurrently in Python. It is best used for I/O-bound tasks. It uses a single thread to run multiple tasks concurrently.
 
-## Python Threading (vs C++)
+## Python Threading 
 ### Threading in Python
 Python has a Global Interpreter Lock (GIL) which prevents "true" threading. The GIL is a mutex (mutual exclusion) that protects access to Python objects, preventing memory corruption. This means that only one thread can execute Python code at a time. This makes Python threads unsuitable for CPU-bound tasks, but they are still useful for e.g. I/O-bound tasks. 
 
@@ -131,9 +145,7 @@ Time taken: 0.02545785903930664
 ```
 Actually a bit faster without threads.
 
-## C++
-
-### Threading in C++
+## Threading in C++
 
 In C++ threads are part of the standard library since C++11. The `std::thread` class is used to create and manage threads. Here is an example of how to create a corresponding counter script in C++:
 
