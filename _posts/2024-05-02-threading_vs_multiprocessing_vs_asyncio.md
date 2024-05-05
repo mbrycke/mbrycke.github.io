@@ -3,12 +3,13 @@ title: Threading vs Multiprocessing vs Asyncio in Python
 date: 2024-05-02
 categories: [programming, parallelism]
 tags: [threading, multiprocessing, asyncio, python, c++]
+mermaid: true # Needed for mermaid, don't include by default since make rendering a bit slower
 ---
 
 ## TL;DR
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'lineInterpolate': 'basis' }}}%%
 graph TD
-
 A[I/O bound] -- Yes --> B[Very slow I/O and/or high volume]
 A -- No--> C[MultiProcessing]
 B -- Yes --> E[Asyncio]
