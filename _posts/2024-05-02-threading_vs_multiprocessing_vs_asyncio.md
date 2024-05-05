@@ -8,12 +8,11 @@ mermaid: true # Needed for mermaid, don't include by default since make renderin
 
 ## TL;DR
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'lineInterpolate': 'basis' }}}%%
 graph TD
-A[I/O bound] -- Yes --> B[Very slow I/O and/or high volume]
-A -- No--> C[MultiProcessing]
-B -- Yes --> E[Asyncio]
-B -- No --> D[Threading]
+A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
+A -- "No"--> C[MultiProcessing]
+B -- "Yes" --> E[Asyncio]
+B -- "No" --> D[Threading]
 ```
 
     
