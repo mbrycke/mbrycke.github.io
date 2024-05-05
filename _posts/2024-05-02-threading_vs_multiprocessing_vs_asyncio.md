@@ -9,10 +9,10 @@ tags: [threading, multiprocessing, asyncio, python, c++]
 ```mermaid
 graph TD
 
-A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
-A -- "No"--> C[MultiProcessing]
-B --"Yes"--> E[Asyncio]
-B --"No"--> D[Threading]
+A[I/O bound] -- Yes --> B[Very slow I/O and/or high volume]
+A -- No--> C[MultiProcessing]
+B -- Yes --> E[Asyncio]
+B -- No --> D[Threading]
 ```
 
     
