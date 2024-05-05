@@ -7,13 +7,12 @@ tags: [threading, multiprocessing, asyncio, python, c++]
 
 ## TL;DR
 ```
-graph LR
-
-
-A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
-A -- "No"--> C[MultiProcessing]
-B --"Yes"--> E[Asyncio]
-B --"No"--> D[Threading]
+%%{init: {'theme':'base', 'themeVariables': { 'lineInterpolate': 'basis' }}}%%
+graph TD
+    A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
+    A -- "No"--> C[MultiProcessing]
+    B --"Yes"--> E[Asyncio]
+    B --"No"--> D[Threading]
 ```
 
     
