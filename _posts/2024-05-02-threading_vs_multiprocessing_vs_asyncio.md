@@ -10,7 +10,7 @@ mermaid: true # Needed for mermaid, don't include by default since make renderin
 ```mermaid
 graph TD
 A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
-A -- "No"--> C[MultiProcessing]
+A -- " No "--> C[MultiProcessing]
 B -- "Yes" --> E[Asyncio]
 B -- "No" --> D[Threading]
 ```
