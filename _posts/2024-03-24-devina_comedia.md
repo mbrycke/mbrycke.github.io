@@ -7,7 +7,7 @@ tags: [Dante, Devina_Comedia] # TAG names should always be lowercase
 
 (to be continued...)
 ## Intro
-Much of the book is about Dante going to the afterlife and meeting a whole lot of people. While doing so, he makes many political commentaries. Which people does Dante meet? Most of the people many of us have never heard of, not even scholars. But one requirement is that the person has died before 1300. Besides that, there seems to be no restrictions, even fictional characters appear, like Aeneas from Virgil. However, many of them are very famous, even in our time.
+Much of the book is about Dante going to the afterlife and meeting a whole lot of people. While doing so, he makes many political commentaries. Which people does Dante meet? Most of the people many of us have never heard of, not even scholars, while others are famous still in our time. But one requirement is that the person has died before 1300. Besides that, there seems to be no restrictions, even fictional characters appear, like Aeneas from Virgil.
 
 It is important for us to understand the poem by becoming a bit familiar with the characters who are contemporary with Dante (but of course, have passed away) who lived in Florence or thereabouts. These characters are for the most part unknown to most of us today.
 
