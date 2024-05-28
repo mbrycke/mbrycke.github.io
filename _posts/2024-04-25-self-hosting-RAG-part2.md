@@ -44,6 +44,6 @@ SELECT id, content FROM embeddings ORDER BY vector_data <-> '{0.219.., 0.193...}
 
 Now we can use the retrieved data, feed it to a generative language model and ask the model to generate the most relevant information to the query.
 
-*This was quite a hand-wavy explanation of how to generate embeddings, store and retrieve them. I might add more details later.*
+*This was quite a handwavy explanation of how to generate embeddings, store and retrieve them. I might add more details later.*
 
 
