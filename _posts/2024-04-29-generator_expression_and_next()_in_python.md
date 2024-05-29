@@ -6,7 +6,7 @@ tags: [generators, next()]
 ---
     
 
-A common scenario is to have a list of objects from which we want to select a specific object.
+A common scenario is to have a list of objects from which we want to select a specific item.
 
 E.g. 
 ```python
@@ -50,5 +50,5 @@ next(iterator, default)
 
 Using list comprehension is also an option, but it will be less efficient since it will iterate over the entire list (list comprehension does not have a break statement):
 ```python
-person = [person for person in persons if person.name == 'Bob'][0] # less efficient
+person = [person for person in persons if person.name == 'Bob'][0] # less efficient since it will iterate over the entire list
 ```
