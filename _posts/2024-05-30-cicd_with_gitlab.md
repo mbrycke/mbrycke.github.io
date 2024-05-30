@@ -7,7 +7,7 @@ tags: [ci/cd, gitlab, devops, programming, automation]
     
 CI/CD (Continuous Integration/Continuous Deployment) is a practice used to automate the integration of code changes and the deployment of code to production. In larger projects it is common to have separate CI and CD pipelines, since the deployment must be handled more cautiously. The CI pipeline is then used to build and test the code, while the CD pipeline is used to deploy the code to production.
 
-In this post we will use GitLab CI to illustrate how to set up a CI/CD pipeline. Actually we will set up two pipelines; one that triggers when code is merged and one that triggers on a schedule.
+In this post we will use GitLab CI to illustrate how to set up a CI/CD pipeline. Actually we illustrate how to set up two pipelines; one that triggers when code is merged and one that triggers on a schedule.
 
 We'll assume we already have a GitLab repository set up.
 
@@ -15,8 +15,8 @@ We'll assume we already have a GitLab repository set up.
 A pipeline is a set of automated tasks that are run in a specific order. In GitLab, a pipeline is defined in a file called `.gitlab-ci.yml`. This file should be placed in the root of the repository. It's kind of the backbone of the CI/CD process. A pipeline consists of stages, jobs and tasks.
 
 ## Stages
-A stage is a group of jobs. The stages are defined in the `.gitlab-ci.yml` file. That 
-Jobs in the same stage are run in parallel, while jobs in different stages are run sequentially. The fact that jobs in different stages are run sequentially (i.e. no job in the next stage is started until all jobs in the previous stage have finished) is a key feature of the CI/CD pipeline. You might build the code in one stage, run tests in the next stage, (possibly run more tests that depends on the results from the previous  stage in yet another stage) and deploy the code in the last stage.
+A stage is a group of jobs. The stages are defined in the `.gitlab-ci.yml` file. 
+Jobs in the same stage can be run in parallel or sequentially, while jobs in different stages are always run sequentially. The fact that jobs in different stages are run sequentially (i.e. no job in the next stage is started until all jobs in the previous stage have finished) is a key feature of the CI/CD pipeline. You might build the code in one stage, run tests in the next stage, (possibly run more tests that depends on the results from the previous stage in yet another stage) and deploy the code in the last stage.
 
 Example of stages:
 ```yaml
