@@ -1,5 +1,5 @@
 ---
-title: CICD with GitLab
+title: CICD with GitLab CI
 date: 2024-05-30
 categories: [programming, ci/cd, gitlab]
 tags: [ci/cd, gitlab, devops, programming, automation]
