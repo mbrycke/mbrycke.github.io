@@ -5,7 +5,7 @@ categories: [programming, python]
 tags: [enum, flag, auto]
 ---
     
-Using the enum module in Python can make the code more readable and also help with autocompletion in IDEs (e.g. lessen risk for typos etc.) It's useful for e.g. replacing magic numbers  or in switch/case statements, if statements etc.
+Using the enum module in Python can make the code more readable and also help with autocompletion in IDEs (can lessen risk for typos etc.) It's useful for e.g. replacing magic numbers  or in switch/case statements, if statements etc.
 
 Example:
 ```python
