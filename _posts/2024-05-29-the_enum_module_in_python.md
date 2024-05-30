@@ -1,6 +1,6 @@
 ---
 title: The enum module in Python
-date: 2024-05-30
+date: 2024-05-29
 categories: [programming, python]
 tags: [enum, flag, auto]
 ---
