@@ -7,7 +7,7 @@ tags: [python, c++, c, shared objects, ctypes, pybind11]
     
 It's quite common for Python modules to be written partly in C or C++ for performance reasons. It's quite straightforward to use shared objects in Python, and there are several ways to do it. In this post, we will look at two ways to use shared objects in Python: using the `ctypes`  module and using `pybind11`.
 
-I would argue that using `ctypes` or `pybind` is easier than using the `Cython` module for simple use cases.
+I would argue that using `ctypes` or `pybind11` is easier than using the `Cython` module for simple use cases.
 
 ## Using ctypes
 
