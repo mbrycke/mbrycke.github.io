@@ -5,9 +5,7 @@ categories: [programming, python, c++, c]
 tags: [python, c++, c, shared objects, ctypes, pybind11]
 ---
     
-It's quite common for Python modules to be written partly in C or C++ for performance reasons. It's quite straightforward to use shared objects in Python, and there are several ways to do it. In this post, we will look at two ways to use shared objects in Python: using the `ctypes`  module and using `pybind11`.
-
-I would argue that using `ctypes` or `pybind11` is easier than using the `Cython` module for simple use cases.
+It's quite common for Python modules to be written partly in C or C++ for performance reasons. One way to do this is to use "shared objects" in Python. In this post, we will look at two ways to do this:: using the `ctypes` module, and using `pybind11`. Depending on the situation this might be easier than using e.g. Cython.
 
 ## Using ctypes
 
@@ -47,10 +45,10 @@ print("The result is:", result)
 ```
 
 
-(This simple function will not be faster then the built-in `+` operator in Python, but it's just an example. The reason it will not be faster is that the function call overhead is higher than the actual computation time.)
+(This simple function will probably not be faster then the built-in `+` operator in Python because of the function call overhead which in this case will take much longer than the actual computation. But it's a simple example to show how to use shared objects in Python.)
 
 ## Using pybind11
-When importing shared objects from c++ code, we could still use `ctypes` but there are lots of limitations. Instead, let's use `pybind11`.
+When importing shared objects from c++ code `ctypes`  can stillb e utilized, but it has several limitations. Instead, let's use `pybind11`.
 First install `pybind11` with the following command:
 ```bash
 pip install pybind11
@@ -71,7 +69,7 @@ PYBIND11_MODULE(example, m) {
     m.def("add", &add, "A function which adds two numbers", py::arg("i"), py::arg("j"));
 }
 ```
-Notice that we could add a module docstring, function docstring  and argument names to the function.
+Notice that we could add a module docstring, function docstring and argument names to the function.
 <br>
 
 Compile the file with the following command:
