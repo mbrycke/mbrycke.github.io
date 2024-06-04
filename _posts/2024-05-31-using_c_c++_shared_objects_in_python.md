@@ -1,5 +1,5 @@
 ---
-title: Using C/C++ shared objects in python
+title: Using C/C++ shared objects in Python
 date: 2024-05-31
 categories: [programming, python, c++, c]
 tags: [python, c++, c, shared objects, ctypes, pybind11]
