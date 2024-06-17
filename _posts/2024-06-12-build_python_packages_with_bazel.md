@@ -1,5 +1,5 @@
 ---
-title: Build Python packages with setuptools and Bazel
+title: Build Python packages with setuptools or Bazel
 date: 2024-06-12
 categories: [programming, python, bazel]
 tags: [python, bazel, wheel, twine]
@@ -78,6 +78,8 @@ setup(
         'Operating System :: OS Independent',
     ],
 ```
+>Note that the package name, i.e. `name='my_package'` doesn't necessarily have to be the same as the foler named `my_package`. The folder name dictate what the import name is when used in an application. The name is what will be shown in e.g. `pip list`. Usually it's conveniant to use the same name{: .prompt-info}
+
 `find_packages()` is a function that will automatically find all packages in the package folder and include them. You can specify directories you want to exclude by passing the `exclude` argument to `find_packages()`. E.g. `find_packages(exclude=['tests'])` will exclude the `tests` directory.
 `classifiers` is a list of strings that categorize the package. The classifiers are used by the Python Package Index (PyPI) to classify the package. You can find a list of classifiers [here](https://pypi.org/classifiers/).
 

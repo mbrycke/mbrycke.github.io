@@ -13,7 +13,11 @@ Write your content here.
     return template
 
 
+<<<<<<< Updated upstream
 title = "Build Python packages with Bazel"
+=======
+title = "CICD with GitLab"
+>>>>>>> Stashed changes
 today = datetime.date.today()
 template = generate_template(title, today)
 
