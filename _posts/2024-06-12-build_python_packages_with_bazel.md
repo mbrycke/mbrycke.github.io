@@ -78,7 +78,7 @@ setup(
         'Operating System :: OS Independent',
     ],
 ```
->Note that the package name, i.e. `name='my_package'` doesn't necessarily have to be the same as the foler named `my_package`. The folder name dictate what the import name is when used in an application. The name is what will be shown in e.g. `pip list`. Usually it's conveniant to use the same name
+>Note that the package name, i.e. `name='my_package'` doesn't necessarily have to be the same as the folder named `my_package`. The folder name dictate what the import name is when used in an application. The actual package name is what will be shown in e.g. `pip list`. Usually it's conveniant to use the same name.
 {: .prompt-info}
 
 `find_packages()` is a function that will automatically find all packages in the package folder and include them. You can specify directories you want to exclude by passing the `exclude` argument to `find_packages()`. E.g. `find_packages(exclude=['tests'])` will exclude the `tests` directory.
