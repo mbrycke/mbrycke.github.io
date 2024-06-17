@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='my_python_package_name',
+    name='my_package',
     version='0.1.0',
     author='Your Name',
     author_email='your_email@example.com',
@@ -9,6 +9,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         # List any dependencies your package requires
+        'numpy',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

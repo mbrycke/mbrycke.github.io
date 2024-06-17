@@ -4,8 +4,8 @@ def generate_template(title:str, today:datetime.date) -> str:
     template = f"""---
 title: {title}
 date: {today}
-categories: [programming, asyncio]
-tags: [multiprocessing, asyncio, threading python]
+categories: [programming, python, bazel]
+tags: [python, bazel, wheel, twine]
 ---
     
 Write your content here.
@@ -13,12 +13,12 @@ Write your content here.
     return template
 
 
-title = "Asyncio vs Multiprocessing in Python"
+title = "Build Python packages with Bazel"
 today = datetime.date.today()
 template = generate_template(title, today)
 
 # Create a new file with the template
-file_name = f"{today}-{title}.md".replace(" ", "_").lower()
+file_name = f"{today}-{title}.md".replace(" ", "_").replace("/","_").lower()
 with open(file_name, "w") as file:
     file.write(template)
 
