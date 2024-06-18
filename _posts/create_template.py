@@ -4,8 +4,8 @@ def generate_template(title:str, today:datetime.date) -> str:
     template = f"""---
 title: {title}
 date: {today}
-categories: [programming, python, bazel]
-tags: [python, bazel, wheel, twine]
+categories: [programming, python, argparse]
+tags: [python, argparse,]
 ---
     
 Write your content here.
@@ -13,11 +13,7 @@ Write your content here.
     return template
 
 
-<<<<<<< Updated upstream
-title = "Build Python packages with Bazel"
-=======
-title = "CICD with GitLab"
->>>>>>> Stashed changes
+title = "Parse arguments to your python script using argparse"
 today = datetime.date.today()
 template = generate_template(title, today)
 
