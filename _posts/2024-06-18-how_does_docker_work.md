@@ -1,5 +1,5 @@
 ---
-title: How does Docker work?
+title: How Docker works (in a nutshell).
 date: 2024-06-18
 categories: [docker, devops]
 tags: [docker, devops]
