@@ -20,7 +20,7 @@ my_package_folder/
 Here I set a different name on the folder containing the package itself. In examples you often see the package folder and the package itself having the same name which can be convenient but I want to illustrate that it is not necessary.
 
 
-Note the __init__.py file in the package folder. This file isn't strictly necessary in Python 3.3 and later, but it can be good practice to include it. The __init__.py file can be empty or it can contain initialization code for the package. It's common to use it to expose functions defined in the package modules so that they can be imported directly from the package without having to import the module first. E.g:
+Note the `__init__.py` file in the package folder. This file isn't strictly necessary in Python 3.3 and later, but it can be good practice to include it. The `__init__.py` file can be empty or it can contain initialization code for the package. It's common to use it to expose functions defined in the package modules so that they can be imported directly from the package without having to import the module first. E.g:
 By placing
 ```python
 # my_package/__init__.py
