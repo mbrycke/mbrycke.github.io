@@ -4,8 +4,9 @@ def generate_template(title:str, today:datetime.date) -> str:
     template = f"""---
 title: {title}
 date: {today}
-categories: [programming, python, argparse]
-tags: [python, argparse,]
+categories: [docker, devops]
+tags: [docker, devops]
+
 ---
     
 Write your content here.
@@ -13,7 +14,7 @@ Write your content here.
     return template
 
 
-title = "Parse arguments to your python script using argparse"
+title = "How does Docker work?"
 today = datetime.date.today()
 template = generate_template(title, today)
 
