@@ -1,6 +1,6 @@
 ---
 title: Parse arguments to your python script using argparse
-date: 2024-06-18
+date: 2024-04-02
 categories: [programming, python, argparse]
 tags: [python, argparse, subparsers]
 ---
