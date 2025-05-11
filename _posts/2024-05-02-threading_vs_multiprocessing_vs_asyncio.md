@@ -7,6 +7,7 @@ mermaid: true # Needed for mermaid, don't include by default since make renderin
 ---
 
 ## TL;DR
+
 ```mermaid
 graph TD
 A[I/O bound] -- "Yes" --> B[Very slow I/O and/or high volume]
@@ -15,18 +16,22 @@ B -- "Yes" --> E[Asyncio]
 B -- "No" --> D[Threading]
 ```
 
-    
 ## Introduction
+
 ### Threads vs Multiprocessing
+
 The difference between threads and processes is that threads share the same memory space, while processes have separate memory spaces (and separate python interpreter). This makes threads more lightweight than processes. But it also makes threads more error-prone since they can interfere with each other.
 
 In this post we will also compare how threading in Python and C++. There is a big difference in how threads are implemented in the two languages. Python has a Global Interpreter Lock (GIL) which makes it difficult to run threads in parallel. All threads do run concurrently, but only one thread can execute Python code at a time. C++ threads do not have this limitation.
 
 ### Asyncio
+
 Asyncio (introduced in Python 3.4) is another way to run multiple tasks concurrently in Python. It is best used for I/O-bound tasks. It uses a single thread to run multiple tasks concurrently.
 
-## Python Threading 
+## Python Threading
+
 ### Threading in Python
+
 Python has a Global Interpreter Lock (GIL) which prevents "true" threading. The GIL is a mutex (mutual exclusion) that protects access to Python objects, preventing memory corruption. This means that only one thread can execute Python code at a time. This makes Python threads unsuitable for CPU-bound tasks, but they are still useful for e.g. I/O-bound tasks. 
 
 In Python, the `threading` module is used to create and manage threads. Here is an example of how to create a thread in Python which runs concurrently with the main program:
@@ -49,6 +54,7 @@ print("Thread has finished")
 ```
 
 ### I/O-bound tasks
+
 Here is an example of how to download a list of urls concurrently using threads. This is a common use case for threads in Python since downloading files is often I/O-bound:
 
 ```python
@@ -115,11 +121,14 @@ finish=time.time()
 print("All threads are finished")
 print(f"Time taken: {finish-start}")
 ```
+
 The output when testing was:
+
 ```bash
 All threads are finished
 Time taken: 0.028651952743530273
 ```
+
 while running without threads:
 
 ```python
@@ -137,11 +146,14 @@ finish=time.time()
 print("All threads are finished")
 print(f"Time taken: {finish-start}")
 ```
+
 yielded:
+
 ```bash
 All threads are finished
 Time taken: 0.02545785903930664
 ```
+
 Actually a bit faster without threads.
 
 ## Threading in C++
@@ -181,6 +193,7 @@ int main() {
     return 0;
 }
 ```
+
 Compiling with `g++ -std=c++23 main -pthread main.cpp -o main` yielded:
 
 ```bash
@@ -189,6 +202,7 @@ Time taken: 0.269896 seconds
 ```
 
 And without threads:
+
 ```cpp
 
 #include <iostream>
@@ -216,18 +230,22 @@ int main() {
     return 0;
 }
 ```
+
 yielded:
+
 ```bash
 All threads are finished
 Time taken: 0.860533 seconds
 ```
+
 which is quite a bit slower than with threads.
 
 ## Multiprocessing in Python
+
 To run multiple tasks concurrently without using threads (which is limited by the GIL), we can use the `multiprocessing` module in Python. The `multiprocessing` module allows us to create multiple processes, each with its own memory space *and* its own Python interpreter. This means that the processes can run in parallel and possibly utilize multiple CPU cores. If you have a CPU-bound task, multiprocessing is a good choice.
 
-
 ### Mulitprocessin example
+
 ```python
 import multiprocessing
 import time
@@ -252,13 +270,16 @@ if __name__ == "__main__":
     print("Results:", results)
 
 ```
+
 yields
+
 ```bash
 Time taken: 1.7265195846557617 seconds
 Results: [4999999950000000, 4999999950000000, 4999999950000000, 4999999950000000]
 ```
 
 and without multiprocessing
+
 ```python
 import time
 
@@ -278,20 +299,24 @@ if __name__ == "__main__":
     print(f"Time taken: {time.time() - start_time} seconds")
     print("Results:", results)
 ```
+
 yields
+
 ```bash
 Time taken: 6.604349136352539 seconds
 Results: [4999999950000000, 4999999950000000, 4999999950000000, 4999999950000000]
 ```
+
 So quite a bit faster with multiprocessing.
 
 However, there is an overhead in creating processes. If we would set the counter to `int(1e4)` instead of `int(1e8)` the overhead would probably make the multiprocessing version slower.
 
-
 ## Asyncio
+
 Best used for I/O-bound tasks. Uses a single thread to run multiple tasks concurrently. More efficient than threading for high volume I/O-bound tasks. 
 
 ### Asyncio example
+
 ```python
 import asyncio
 
@@ -318,12 +343,14 @@ asyncio.run(main())
 ```
 
 ### Why not always use asyncio instead of threading?
+
 While asyncio is more efficient than threading for I/O-bound tasks, it also introduces complexity. It requires a different programming model (asynchronous programming) and can be more difficult to debug. Threading is simpler to use and understand, and is often sufficient for many use cases.
 
 ## Summary Comparison
-|Aspect/Feature |	Threading |	Multiprocessing	| asyncio|
-|---------------|-------------|-----------------|------|
-|Concurrency Model |	Concurrent |	Parallel |	Concurrent|
-|Handles CPU-bound	| Poorly (due to GIL)	| Well (true parallelism)	|Poorly|
-|Handles I/O-bound |	Well	| Overkill (heavyweight) |	Excellently|
-|Memory Efficiency	| Efficient (shared memory)	| Less efficient (separate memory spaces) |	Efficient|
+
+| Aspect/Feature | Threading | Multiprocessing| asyncio |
+|----------------|-----------|----------------|---------|
+| Concurrency Model | Concurrent | Parallel | Concurrent |
+| Handles CPU-bound | Poorly (due to GIL) | Well (true parallelism) | Poorly |
+| Handles I/O-bound | Well| Overkill (heavyweight) | Excellently |
+| Memory Efficiency | Efficient (shared memory) | Less efficient (separate memory spaces) | Efficient |
